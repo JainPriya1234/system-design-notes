@@ -120,7 +120,9 @@ can happen because data-modifying operations on the data store and cache are not
 4. **Mitigating failures**: A single cache server represents a potential single point of failure, multiple
 cache servers across different data centers are recommended to avoid SPOF.
 5. **Eviction Policies:**: Once the cache is full, items need to be evicted to free up memory. LRU is the most popular cache eviction policy.
-6. ** how LRU works ???
+6. **How LRU works ???***:
+   -> removes the item that was used least recently.
+   -> implementation uses two data structures: Hash map & Doubly Linked List
 
 ---
 
