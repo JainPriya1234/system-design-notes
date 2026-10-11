@@ -127,7 +127,7 @@ cache servers across different data centers are recommended to avoid SPOF.
 ---
 
 ## Section 7: Content Delivery Network (CDN)
-A **CDN** improves load times by caching static content (images, CSS, JavaScript) on geographically distributed servers.
+A **CDN** improves load times by caching static content (images, CSS, JavaScript) on geographically distributed servers(nearest location server).
 
 <div style="margin-left:3rem">
    <img src="./images/cdn.png" width="400" />
@@ -135,7 +135,7 @@ A **CDN** improves load times by caching static content (images, CSS, JavaScript
 
 ### Workflow
 1. User requests content from the nearest CDN server.
-2. If unavailable, content is fetched from the origin server and cached.
+2. If unavailable, content is fetched from the origin server and cached-> same rule cache hit/miss.
 
 
 ### CDN considerations
@@ -144,23 +144,26 @@ A **CDN** improves load times by caching static content (images, CSS, JavaScript
 3. **CDN fallback:** If there is a temporary CDN outage, clients should be able to detect the problem
 and request resources from the origin.
 4. **Invalidating files:** If files are updated the cache should be invalidated to point to the updated files.
+5. Popular CDN -> Amazon CloudFront , Cloudflare, Akamai
 
 ---
 
 ## Section 8: Stateless Web Tier
-By moving session data to a shared datastore, web servers become stateless. This allows:
-1. Easier horizontal scaling.
+By moving session data to a shared datastore (Redis) , web servers become stateless. This allows:
+1. Easier horizontal scaling(as all of them are pointing to same db(Redis) ).
 2. Auto-scaling based on traffic.
 
 <div style="margin-left:3rem">
    <img src="./images/stateless.png" width="400" />
 </div>
-
+<div style="margin-left:3rem">
+ <img width="786" height="546" alt="Screenshot 2026-10-12 at 1 10 21 AM" src="https://github.com/user-attachments/assets/fd7a1b02-2959-4a99-8013-a9358afc4351" />
+</div>
 ---
 
 ## Section 9: Multi-Data Center Setup
 Deploying across multiple data centers improves availability and reduces latency. Strategies include:
-
+Routing can consider geographic distance, network latency, data-center health, and current load.
 <div style="margin-left:3rem">
    <img src="./images/data-center.png" width="400" />
 </div>
