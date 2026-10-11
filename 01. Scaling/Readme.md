@@ -17,6 +17,9 @@ Initially, all components (web app, database, cache) run on a single server.
 2. IP address of the web-server is returned to the browser or mobile app.
 3. HTTP requests are sent to the web server, which returns HTML or JSON responses.
 
+### How DNS Solves?
+Your application server lives on IP Address.
+User browser -> DNS lookup to finds IP (cache/ dns resolver use to find IP)-> IP returned -> browser connects to the server -> request -> response.
 ### Traffic Sources
 1. **Web Applications:** Use server-side languages (e.g., Python, Java) for business logic and client-side languages (e.g., JavaScript, HTML) for presentation.
 2. **Mobile Applications:** Communicate with the web server using HTTP and JSON for lightweight data exchange.
@@ -40,7 +43,7 @@ As the user base grows, the database is moved to a dedicated server to allow ind
    - Document Stores
 
 - Non-relational databases might be the right choice if:
-   - application requires super-low latency.
+   - application requires super-low latency (fast response).
    - data is unstructured, or  there is no relational data.
    - only need to serialize and deserialize data (JSON, XML, YAML, etc.).
    - need to store a massive amount of data.
@@ -117,6 +120,7 @@ can happen because data-modifying operations on the data store and cache are not
 4. **Mitigating failures**: A single cache server represents a potential single point of failure, multiple
 cache servers across different data centers are recommended to avoid SPOF.
 5. **Eviction Policies:**: Once the cache is full, items need to be evicted to free up memory. LRU is the most popular cache eviction policy.
+6. ** how LRU works ???
 
 ---
 
